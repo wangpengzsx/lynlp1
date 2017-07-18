@@ -47,7 +47,6 @@ export default class Result extends React.Component {
 	handleScroll(){
 		let self=this
 		function getElementTop(elem){
-			console.log(elem);
 			var elemTop =elem.offsetTop;
 			elem=elem.offsetParent;
 			while(elem != null){
