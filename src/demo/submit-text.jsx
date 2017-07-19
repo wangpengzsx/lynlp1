@@ -2,6 +2,15 @@ import React from "react";
 import {observer} from "mobx-react";
 import '../../styles/submit-text.scss';
 import contentStore from '../mobx/content-store'
+import simpleComplexStore from "../mobx/simple-complex-store";
+//import contentSummaryStore from "../mobx/conent-summary-store";
+//import textClassificationStore from "../mobx/text-classification-store";
+//import keywordExtractStore from "../mobx/keyword-extract-store";
+//import sentimentAnalysisStore from "../mobx/sentiment-analysis-store"
+//import semanticAssociationStore from "../mobx/semantic-association-store"
+//import dependencyGrammarStore from "../mobx/dependency-grammar-store"
+//import WordSegmentationStore from "../mobx/word-segmentation-store"
+//import EntityExtractStore from "../mobx/entity-extract-store"
 
 
 
@@ -40,6 +49,9 @@ export default class SubitText extends React.Component{
 		)
 	}
 	submitText(){
+		let {content} = contentStore;
+		simpleComplexStore.fetchData(content);
+
 
 	}
 	grabContent(){
