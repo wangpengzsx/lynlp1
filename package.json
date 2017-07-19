@@ -17,6 +17,8 @@
   "license": "MIT",
   "homepage": "https://github.com/alicoding/react-webpack-babel#readme",
   "dependencies": {
+    "d3": "^4.10.0",
+    "d3-cloud": "^1.2.4",
     "jquery": "^3.2.1",
     "mobx": "^3.2.1",
     "mobx-react": "^4.2.2",
