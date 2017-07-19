@@ -1,6 +1,11 @@
 import React from "react";
+import {observer} from "mobx-react";
 import '../../styles/submit-text.scss';
+import contentStore from '../mobx/content-store'
 
+
+
+@observer
 export default class SubitText extends React.Component{
 	constructor(props){
 		super(props)
@@ -9,16 +14,41 @@ export default class SubitText extends React.Component{
 			get:false,
 		}
 	}
+
+	componentWillMount(){
+		this.submitText();
+	}
+
 	render(){
+		let {isFetching} = contentStore;
+
 		return(
 			<div className="wb-t">
-				<textarea className="txtr_1" value={'aaaa'}/>
+				<textarea className="txtr_1" value={contentStore.content}
+									onChange={(e)=>contentStore.content = e.target.value}/>
 				<div className="wbt-b cf">
-					<a href="javascript:void(0)" className="tj-a fr" >提交文本</a>
-					<a href="javascript:void(0)" className="zq-a fr">抓取</a>
-					<input type="url" className="txt-1 fr" placeholder="网页URL....."/>
+					<a href="javascript:void(0)" className="tj-a fr" onClick={this.submitText.bind(this)}>提交文本</a>
+					<a href="javascript:void(0)" className="zq-a fr" onClick={this.grabContent.bind(this)}>抓取</a>
+					<input type="url" className="txt-1 fr" placeholder="网页URL....." value={this.state.url}
+								 onChange={(e) => this.setState({url: e.target.value})}/>
+					{isFetching ? <div className="loading">
+						<div className="imgBox"><img className="fr img" src={require('../../images/3.gif')} alt=""/></div>
+						<div className="loadingText">网页抓取中....</div>
+					</div> : null}
 				</div>
 			</div>
 		)
+	}
+	submitText(){
+
+	}
+	grabContent(){
+		let {url} = this.state;
+
+		if(url == ''){
+			alert('请输入网址。')
+			return
+		}
+		contentStore.grabContent(url,()=> this.submitText());
 	}
 }
