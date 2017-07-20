@@ -10,7 +10,7 @@ import keywordExtractStore from "../mobx/keyword-extract-store";
 //import semanticAssociationStore from "../mobx/semantic-association-store"
 //import dependencyGrammarStore from "../mobx/dependency-grammar-store"
 //import WordSegmentationStore from "../mobx/word-segmentation-store"
-//import EntityExtractStore from "../mobx/entity-extract-store"
+import EntityExtractStore from "../mobx/entity-extract-store"
 
 
 
@@ -52,6 +52,7 @@ export default class SubitText extends React.Component{
 		let {content} = contentStore;
 		simpleComplexStore.fetchData(content);
 		keywordExtractStore.fectchData(content);
+		EntityExtractStore.fetchData(content);
 
 
 	}
