@@ -6,7 +6,7 @@ class KeywordExtractStore{
 	@observable isFetching = false;
 
 	@action
-	fectchData(content){
+	fetchData(content){
 		this.isFetching = true;
 		LynlpApi.keyword(content,50).then(res=>{
 			this.keyword = res;
